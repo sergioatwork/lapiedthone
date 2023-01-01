@@ -1,0 +1,117 @@
+/***
+ *    ██████╗ ███████╗ ██████╗ ██╗      █████╗  ██████╗ ███████╗    ██████╗  ██████╗ ██╗     ██╗ ██████╗███████╗     ██╗██████╗ ███████╗███╗   ███╗
+ *    ██╔══██╗██╔════╝██╔════╝ ██║     ██╔══██╗██╔════╝ ██╔════╝    ██╔══██╗██╔═══██╗██║     ██║██╔════╝██╔════╝    ███║██╔══██╗██╔════╝████╗ ████║
+ *    ██████╔╝█████╗  ██║  ███╗██║     ███████║██║  ███╗█████╗      ██████╔╝██║   ██║██║     ██║██║     █████╗      ╚██║██████╔╝█████╗  ██╔████╔██║
+ *    ██╔══██╗██╔══╝  ██║   ██║██║     ██╔══██║██║   ██║██╔══╝      ██╔═══╝ ██║   ██║██║     ██║██║     ██╔══╝       ██║██╔══██╗██╔══╝  ██║╚██╔╝██║
+ *    ██║  ██║███████╗╚██████╔╝███████╗██║  ██║╚██████╔╝███████╗    ██║     ╚██████╔╝███████╗██║╚██████╗███████╗     ██║██║  ██║███████╗██║ ╚═╝ ██║
+ *    ╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝    ╚═╝      ╚═════╝ ╚══════╝╚═╝ ╚═════╝╚══════╝     ╚═╝╚═╝  ╚═╝╚══════╝╚═╝     ╚═╝
+ *                                                                                                                                                 
+ */
+/*
+* Réglage de la taille de la police de base (1rem) pour Mobile et TABLETTE
+*/
+@media screen and (max-width: 992px) {   /* Extra Small, Small : sm, Medium : md, Large : lg */
+	html {
+		font-size: 66%;
+	}
+}
+/*
+* Réglage de la taille de la police de base (1rem) pour Ecan PC XL
+*/
+@media screen and (min-width: 1200px) {   /* Extra Large : xl */
+	html {
+		font-size: 100%;
+	}
+}
+/*
+* Réglage de la taille de la police de base (1rem) Ecan PC XXL
+*/
+@media screen and (min-width: 1400px) {   /* Extra Extra Large : xxl */
+	html {
+		font-size: 125%;
+	}
+}
+/***   Déclaration des polices de caractères   ***/
+@font-face {
+    font-family: 'Permanent Marker';
+    src: url('../fonts/PermanentMarker-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Rock Salt';
+    src: url('../fonts/RockSalt-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+body {
+    background-color: #278880;
+    color: #FFFFFF;
+    font-family: 'Rock Salt', cursive;
+    font-size: 1rem;
+}
+/***
+ *    ██████╗  ██████╗ ██╗   ██╗███████╗    ███╗   ██╗ █████╗ ██╗   ██╗
+ *    ██╔══██╗██╔═══██╗██║   ██║██╔════╝    ████╗  ██║██╔══██╗██║   ██║
+ *    ██████╔╝██║   ██║██║   ██║█████╗      ██╔██╗ ██║███████║██║   ██║
+ *    ██╔══██╗██║   ██║██║   ██║██╔══╝      ██║╚██╗██║██╔══██║╚██╗ ██╔╝
+ *    ██║  ██║╚██████╔╝╚██████╔╝███████╗    ██║ ╚████║██║  ██║ ╚████╔╝ 
+ *    ╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚══════╝    ╚═╝  ╚═══╝╚═╝  ╚═╝  ╚═══╝  
+ *                                                                     
+ */
+header {
+    background-image: url('../img/cabaret-stef-epees.jpg');
+}
+.mhg, .mhd, .mbd, .mbg {
+    width: 18rem;
+    height: 18rem;
+    font-weight: bold;
+    font-size: 4rem;
+    text-decoration: none;
+    color: #EEEEEE;
+    background-color: #000000CC;
+}
+.mhg div, .mhd div, .mbd div, .mbg div{
+    text-align: center;
+    width: 18rem;
+    line-height: 4rem;
+    font-family: 'Permanent Marker', cursive;
+    font-weight: bold;
+    font-size: 4rem;
+    text-decoration: none;
+    transform-origin: center;
+}
+.mhg {
+    border-radius: 18rem 0 0 0;
+}
+.mhg div {
+    padding-bottom: 4rem;
+    transform: rotate(-45deg);
+}
+.mhd {
+    border-radius: 0 18rem 0  0;
+}
+.mhd div{
+    padding-bottom: 4rem;
+    transform: rotate(45deg);
+}
+.mbd {
+    border-radius: 0 0 18rem 0;
+}
+.mbd div{
+    padding-top: 3rem;
+    transform: rotate(-45deg);
+}
+.mbg {
+    border-radius: 0 0 0 18rem;
+}
+.mbg div{
+    padding-top: 4rem;
+    transform: rotate(45deg);
+}
+.grd_logo {
+    width: 24rem;
+    height: 24rem;
+    background-image: url(../img/logo-abs-transparent-blanc.png);
+    background-size: cover;
+}
