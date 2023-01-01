@@ -44,74 +44,13 @@
     font-weight: normal;
     font-style: normal;
 }
-body {
+/* body {
     background-color: #278880;
     color: #FFFFFF;
     font-family: 'Rock Salt', cursive;
     font-size: 1rem;
-}
-/***
- *    ██████╗  ██████╗ ██╗   ██╗███████╗    ███╗   ██╗ █████╗ ██╗   ██╗
- *    ██╔══██╗██╔═══██╗██║   ██║██╔════╝    ████╗  ██║██╔══██╗██║   ██║
- *    ██████╔╝██║   ██║██║   ██║█████╗      ██╔██╗ ██║███████║██║   ██║
- *    ██╔══██╗██║   ██║██║   ██║██╔══╝      ██║╚██╗██║██╔══██║╚██╗ ██╔╝
- *    ██║  ██║╚██████╔╝╚██████╔╝███████╗    ██║ ╚████║██║  ██║ ╚████╔╝ 
- *    ╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚══════╝    ╚═╝  ╚═══╝╚═╝  ╚═╝  ╚═══╝  
- *                                                                     
- */
-header {
-    background-image: url('../img/cabaret-stef-epees.jpg');
-}
-.mhg, .mhd, .mbd, .mbg {
-    width: 18rem;
-    height: 18rem;
-    font-weight: bold;
-    font-size: 4rem;
-    text-decoration: none;
-    color: #EEEEEE;
-    background-color: #000000CC;
-}
-.mhg div, .mhd div, .mbd div, .mbg div{
-    text-align: center;
-    width: 18rem;
-    line-height: 4rem;
-    font-family: 'Permanent Marker', cursive;
-    font-weight: bold;
-    font-size: 4rem;
-    text-decoration: none;
-    transform-origin: center;
-}
-.mhg {
-    border-radius: 18rem 0 0 0;
-}
-.mhg div {
-    padding-bottom: 4rem;
-    transform: rotate(-45deg);
-}
-.mhd {
-    border-radius: 0 18rem 0  0;
-}
-.mhd div{
-    padding-bottom: 4rem;
-    transform: rotate(45deg);
-}
-.mbd {
-    border-radius: 0 0 18rem 0;
-}
-.mbd div{
-    padding-top: 3rem;
-    transform: rotate(-45deg);
-}
-.mbg {
-    border-radius: 0 0 0 18rem;
-}
-.mbg div{
-    padding-top: 4rem;
-    transform: rotate(45deg);
-}
-.grd_logo {
-    width: 24rem;
-    height: 24rem;
-    background-image: url(../img/logo-abs-transparent-blanc.png);
-    background-size: cover;
+} */
+
+.navbar-brand img {
+    height: 2rem;
 }
