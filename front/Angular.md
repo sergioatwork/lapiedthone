@@ -1,16 +1,8 @@
 # ANGULAR
 
-### Installation de Node.JS
-
-https://nodejs.org/fr/
-
 ### Installation de Angular
 
 npm install -g @angular/cli
-
-### En cas de problème de droit d'exécution de script PowerShell
-
-Set-ExecutionPolicy -ExecutionPolicy Bypass
 
 ### Création de l'application
 
@@ -25,6 +17,11 @@ ng serve --open      *l'option --open permet d'ouvrirautomatiquement le navigate
 
 http://localhost:4200/
 
+### Création de module
+
+ng generate module nom_module
+ng g m nom_module
+
 ### Création de composant
 
 *Création avec le nom du composant*
@@ -36,11 +33,6 @@ http://localhost:4200/
 
 ng generate component nom_composant
 ng g c nom_composant
-
-### Création de module
-
-ng generate module nom_module
-ng g c nom_module
 
 ### Création de service
 
