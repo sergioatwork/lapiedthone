@@ -3,13 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { UserRoutingModule } from './user/user-routing.module';
+import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+
   ],
   imports: [
     BrowserModule,
+    UserModule,
+    UserRoutingModule,
     AppRoutingModule
   ],
   providers: [],
