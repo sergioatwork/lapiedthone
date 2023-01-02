@@ -16,7 +16,8 @@ main {
 }
 
 h1 {
-    background-image: url('../assets/img/banniere.jpg');
+    background-image: url('../assets/img/banniere.png');
+    background-size: cover;
     line-height: 8rem;
     text-shadow: 0 0.5rem 0.5rem #FFFFFF;
     font-family: 'Permanent Marker', cursive;
