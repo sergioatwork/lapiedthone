@@ -6,12 +6,14 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { UserRoutingModule } from './user/user-routing.module';
 import { AppRoutingModule } from './app-routing.module';
+import { ReglementComponent } from './reglement/reglement/reglement.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
+    ReglementComponent,
   ],
   imports: [
     BrowserModule,
