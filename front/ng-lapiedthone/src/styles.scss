@@ -10,7 +10,7 @@
 /*
 * Réglage de la taille de la police de base (1rem) pour Mobile et TABLETTE
 */
-@media screen and (max-width: 992px) {   /* Extra Small, Small : sm, Medium : md, Large : lg */
+@media screen and (max-width: 991px) {   /* Extra Small, Small : sm, Medium : md */
 	html {
 		font-size: 66%;
 	}
@@ -18,9 +18,9 @@
 /*
 * Réglage de la taille de la police de base (1rem) pour Ecan PC XL
 */
-@media screen and (min-width: 1200px) {   /* Extra Large : xl */
+@media screen and (min-width: 992px) {   /* Large : lg, Extra Large : xl */
 	html {
-		font-size: 100%;
+		font-size: 80%;
 	}
 }
 /*
@@ -28,29 +28,23 @@
 */
 @media screen and (min-width: 1400px) {   /* Extra Extra Large : xxl */
 	html {
-		font-size: 125%;
+		font-size: 100%;
 	}
 }
 /***   Déclaration des polices de caractères   ***/
 @font-face {
     font-family: 'Permanent Marker';
-    src: url('../fonts/PermanentMarker-Regular.ttf') format('truetype');
+    src: url('assets/fonts/PermanentMarker-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 @font-face {
     font-family: 'Rock Salt';
-    src: url('../fonts/RockSalt-Regular.ttf') format('truetype');
+    src: url('assets/fonts/RockSalt-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
-/* body {
-    background-color: #278880;
-    color: #FFFFFF;
-    font-family: 'Rock Salt', cursive;
-    font-size: 1rem;
-} */
 
-.navbar-brand img {
-    height: 2rem;
+body {
+    font-family: 'Rock Salt';
 }
