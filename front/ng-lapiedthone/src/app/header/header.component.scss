@@ -1,19 +1,24 @@
-h1 {
-    background-image: url('../../assets/img/banniere.png');
+header {
+    background-image: url('../../assets/img/fond_menu.png');
     background-size: cover;
+    background-position: center;
+}
+h1 {
+    height: 14rem;
     line-height: 8rem;
-    text-shadow: 0 0.5rem 0.5rem #FFFFFF;
     font-family: 'Permanent Marker', cursive;
+    font-size: 4rem;
 }
 nav {
-    background-color: #FF8800;
+    margin-top: -6rem;
 }
 .navbar-brand img {
     height: 4rem;
 }
 .nav-link {
-    font-size: 2rem;
     font-family: 'Permanent Marker', cursive;
-    color: #FFFFFF;
-    text-shadow: 0 0rem 0.5rem #000000;
+    text-shadow:    -0.25rem -0.25rem 0.25rem #FF8800FF,
+                    0.25rem -0.25rem 0.25rem #FF8800FF,
+                    -0.25rem 0.25rem 0.25rem #FF8800FF,
+                    0.25rem 0.25rem 0.25rem #FF8800FF;
 }

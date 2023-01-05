@@ -1,8 +1,20 @@
 <app-header></app-header>
 
-<div class="d-flex">
-<router-outlet></router-outlet>
-<div class="w-25 h-25 bg-warning">TOTO</div>
+<div id="fondMain">
+	<!-- <main class="d-flex flex-column flex-lg-row bg-light bg-gradient bg-opacity-50"> -->
+	<main class="container-fluid bg-light bg-gradient bg-opacity-50">
+		<a (click)="affichagers()">Affichage RS</a>
+		<div class="row">
+			<div class="col-lg-1"></div>
+			<div class="col-12 col-lg gx-5">
+				<router-outlet></router-outlet>
+			</div>
+			<div *ngIf="pageAccueil" class="col-12 col-lg-4  gx-5">
+				<app-rs></app-rs>
+			</div>
+			<div class="col-lg-1"></div>
+		</div>
+	</main>
 </div>
 
 <app-footer></app-footer>

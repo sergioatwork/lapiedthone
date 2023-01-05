@@ -48,3 +48,10 @@
 body {
     font-family: 'Rock Salt';
 }
+
+h1 {
+    text-shadow:    -0.25rem -0.25rem 0.25rem #ffffffff,
+                    0.25rem -0.25rem 0.25rem #ffffffff,
+                    -0.25rem 0.25rem 0.25rem #ffffffff,
+                    0.25rem 0.25rem 0.25rem #ffffffff;
+}
