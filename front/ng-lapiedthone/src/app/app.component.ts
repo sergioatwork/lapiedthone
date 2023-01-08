@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router, UrlSegment } from '@angular/router';
 import { map, Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -19,14 +20,15 @@ export class AppComponent implements OnInit {
 
   
   // private urlRoute: Observable<string> = this.routeActuelle.url.pipe(map(segments => segments.join('')));
-  private urlRoute!: ParamMap;//string[] = [];
+  private urlRoute: string = '';
   public pageAccueil: boolean = true;
 
   ngOnInit(): void {
     
     // this.routeActuelle.fragment.subscribe(url => { this.urlRoute = url ?? 'abc'; console.warn(url) });
     // this.routeActuelle.snapshot.url[0].path;
-    this.urlRoute = this.routeActuelle.snapshot.paramMap.has() ?? 'abc';
+    // this.urlRoute = this.routeActuelle.toString() ?? 'abc';
+    this.urlRoute = this.router.routerState.snapshot.url;
     console.log(this.urlRoute);
 
     // // this.urlRoute = this.routeactuelle.snapshot.params;

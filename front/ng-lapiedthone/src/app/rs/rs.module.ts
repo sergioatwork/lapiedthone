@@ -10,10 +10,13 @@ import { FacebookComponent } from './facebook/facebook.component';
   declarations: [
     RsComponent,
     TwitterComponent,
-    FacebookComponent
+    FacebookComponent,
   ],
   imports: [
     CommonModule
+  ],
+  exports:[
+    RsComponent
   ]
 })
 export class RsModule { }
