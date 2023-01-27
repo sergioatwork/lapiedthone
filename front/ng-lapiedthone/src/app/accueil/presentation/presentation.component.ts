@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Global } from '../../global';
 
 @Component({
   selector: 'app-presentation',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./presentation.component.scss']
 })
 export class PresentationComponent {
+
+  constructor(public g: Global) {}
 
 }

@@ -1,15 +1,19 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 
+import { BrowserModule } from '@angular/platform-browser';
+import { AccueilModule } from './accueil/accueil.module';
+import { RsModule } from './rs/rs.module';
 import { AccueilRoutingModule } from './accueil/accueil-routing.module';
 import { UserRoutingModule } from './user/user-routing.module';
 import { AppRoutingModule } from './app-routing.module';
-import { AccueilModule } from './accueil/accueil.module';
-import { RsModule } from './rs/rs.module';
+import { ReactiveFormsModule } from '@angular/forms';
+
+import { Global } from './global';
+
 
 @NgModule({
   declarations: [
@@ -24,8 +28,11 @@ import { RsModule } from './rs/rs.module';
     AccueilRoutingModule,
     UserRoutingModule,
     AppRoutingModule,
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    Global,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

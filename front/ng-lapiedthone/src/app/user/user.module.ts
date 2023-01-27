@@ -8,6 +8,8 @@ import { EditComponent } from './edit/edit.component';
 import { ListComponent } from './list/list.component';
 import { LoginComponent } from './login/login.component';
 import { UserRoutingModule } from './user-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormModule } from '../form/form.module';
 
 
 
@@ -22,8 +24,11 @@ import { UserRoutingModule } from './user-routing.module';
     LoginComponent,
   ],
   imports: [
+    FormModule,
     CommonModule,
-    UserRoutingModule
+    UserRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class UserModule { }

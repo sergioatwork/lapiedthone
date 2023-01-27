@@ -15,8 +15,6 @@ export class AppComponent implements OnInit {
 	constructor(
 		private router: Router) { }
 
-	title = 'La Piedthone';
-
 	ngOnInit(): void {
 		this.router.events.subscribe(event => {
 			this.urlRoute = this.router.url.toString();
