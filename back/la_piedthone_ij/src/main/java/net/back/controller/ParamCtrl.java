@@ -9,19 +9,7 @@ import java.util.ArrayList;
 @RestController
 public class ParamCtrl {
     Param param = new Param();
-    public static void init() {
-        // Initialisation de l'application
-    }
-    @GetMapping("/")
-    public String racineGet() {
-        System.out.println("/");
-        return testGet();
-    }
-    @GetMapping("/test")
-    public String testGet() {
-        System.out.println("/test");
-        return "Hello !!! Everything seem OK ;-)";
-    }
+
     //http://localhost:8080/param/create?key="key"&value="value"
     @GetMapping("/param/create")
     public boolean createParam(

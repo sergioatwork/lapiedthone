@@ -15,6 +15,15 @@ public class Run {
     public Run() {
     }
 
+    public Run(int id, String name, char type, String description, Date startDate, Date endDate) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+        this.description = description;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
+
     public int getId() {
         return id;
     }

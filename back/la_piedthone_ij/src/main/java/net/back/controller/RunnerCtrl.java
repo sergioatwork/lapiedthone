@@ -3,6 +3,7 @@ package net.back.controller;
 import net.back.model.Runner;
 import net.back.model.User;
 import net.back.model.Run;
+import net.back.sqlrequest.RunnerRq;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 
@@ -21,7 +22,7 @@ public class RunnerCtrl {
 
         runner = newRunner;
         // si OK, enregistrement du Runner dans la DB et retour TRUE
-        if (true) {return true;}
+        if (true) {return RunnerRq.addOne(runner);}
 
         // si KO, retour FALSE
         return false;
@@ -33,32 +34,33 @@ public class RunnerCtrl {
         System.out.println("/runner/read/" + idUser + "/" + idRun);
 
         // Récupérer le Runner avec les id idUser + idRun dans la DB
+        runner = RunnerRq.readOne(idUser, idRun);
 
         return runner;
     }
 
     //http://localhost:8080/runner/readAllUser/id
     @GetMapping("/readAllUser/{idRun}")
-    public ArrayList<User> readAllUser(@PathVariable("idRun") int idRun) {
-        System.out.println("/runner/readAllRun/" + idRun);
+    public ArrayList<Runner> readAllUser(@PathVariable("idRun") int idRun) {
+        System.out.println("/runner/readAllUser/" + idRun);
 
-        ArrayList<User> listUser = new ArrayList<User>();
+        ArrayList<Runner> listRunner = new ArrayList<Runner>();
         // Récupérer tout les Run d'un User avec l'id dans la DB
-        listUser.add(user);
+        listRunner = RunnerRq.readAllUser(idRun);
 
-        return listUser;
+        return listRunner;
     }
 
     //http://localhost:8080/runner/readAllRun/id
     @GetMapping("/readAllRun/{idUser}")
-    public ArrayList<Run> readAllRun(@PathVariable("idUser") int idUser) {
-        System.out.println("/runner/readAllRun/" + idUser);
+    public ArrayList<Runner> readAllRun(@PathVariable("idUser") int idUser) {
+        System.out.println("/runner/readAllUser/" + idUser);
 
-        ArrayList<Run> listRun = new ArrayList<Run>();
-        // Récupérer les User d'un Run avec l'id dans la DB
-        listRun.add(run);
+        ArrayList<Runner> listRunner = new ArrayList<Runner>();
+        // Récupérer tout les Run d'un User avec l'id dans la DB
+        listRunner = RunnerRq.readAllRun(idUser);
 
-        return listRun;
+        return listRunner;
     }
 
     //http://localhost:8080/runner/read
@@ -68,35 +70,30 @@ public class RunnerCtrl {
 
         ArrayList<Runner> listRunner = new ArrayList<Runner>();
         // Récupérer l'ensemble des Runner dans la DB
-        listRunner.add(runner);
+        listRunner = RunnerRq.readAll();
 
-        // renvoyer une liste de Runner
         return listRunner;
     }
 
     //http://localhost:8080/runner/update
-    @PostMapping("/update")
+    @PutMapping("/update")
     public boolean updateRunner(@RequestBody Runner updateRunner) {
         System.out.println("/runner/update");
 
         runner = updateRunner;
         // si OK, enregistrement du Runner dans la DB et retour TRUE
-        if (true) {return true;}
+        if (true) {return RunnerRq.updateOne(runner);}
 
         // si KO, retour FALSE
         return false;
     }
 
     //http://localhost:8080/runner/delete/id
-    @GetMapping("/delete/{idUser}/{idRun}")
+    @DeleteMapping("/delete/{idUser}/{idRun}")
     public boolean deleteRunner(@PathVariable("idUser") int idUser, @PathVariable("idRun") int idRun) {
         System.out.println("/runner/delete/" + idUser + "/" + idRun);
 
-        // si OK, suppression du Runner dans la DB et retour TRUE
-        if (true) {return true;}
-
-        // si KO, retour FALSE
-        return false;
+        return RunnerRq.deleteOne(idUser, idRun);
     }
 
 }

@@ -1,6 +1,7 @@
 package net.back.controller;
 
 import net.back.model.Album;
+import net.back.sqlrequest.AlbumRq;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -11,64 +12,61 @@ public class AlbumCtrl {
 
     Album album = new Album();
 
-    //http://localhost:8080/album/create
+    // http://localhost:8080/album/create
     @PostMapping("/create")
     public boolean createAlbum(@RequestBody Album newAlbum) {
         System.out.println("/album/create");
 
         album = newAlbum;
         // si OK, enregistrement du Album dans la DB et retour TRUE
-        if (true) {return true;}
+        if (true) {return AlbumRq.addOne(album);}
 
         // si KO, retour FALSE
         return false;
     }
 
-    //http://localhost:8080/album/read/id
+    // http://localhost:8080/album/read/id
     @GetMapping("/read/{id}")
     public Album readAlbum(@PathVariable("id") int id) {
         System.out.println("/album/read/" + id);
 
         // Récupérer le Album avec l'id dans la DB
+        album = AlbumRq.readOne(id);
 
         return album;
     }
 
-    //http://localhost:8080/album/read
+    // http://localhost:8080/album/read
     @GetMapping("/read")
     public ArrayList<Album> readAllAlbum() {
         System.out.println("/album/read");
 
         ArrayList<Album> listAlbum = new ArrayList<Album>();
         // Récupérer l'ensemble des Album dans la DB
-        listAlbum.add(album);
+        listAlbum = AlbumRq.readAll();
 
         // renvoyer une liste de Album
         return listAlbum;
     }
 
-    //http://localhost:8080/album/update
-    @PostMapping("/update")
+    // http://localhost:8080/album/update
+    @PutMapping("/update")
     public boolean updateAlbum(@RequestBody Album updateAlbum) {
         System.out.println("/album/update");
 
         album = updateAlbum;
         // si OK, enregistrement du Album dans la DB et retour TRUE
-        if (true) {return true;}
+        if (true) {return AlbumRq.updateOne(album);}
 
         // si KO, retour FALSE
         return false;
     }
 
-    //http://localhost:8080/album/delete/id
-    @GetMapping("/delete/{id}")
+    // http://localhost:8080/album/delete/id
+    @DeleteMapping("/delete/{id}")
     public boolean deleteAlbum(@PathVariable("id") int id) {
         System.out.println("/album/delete/" + id);
 
-        // si OK, suppression du Album dans la DB et retour TRUE
-        if (true) {return true;}
-
-        // si KO, retour FALSE
-        return false;
+        return AlbumRq.deleteOne(id);
     }
 }

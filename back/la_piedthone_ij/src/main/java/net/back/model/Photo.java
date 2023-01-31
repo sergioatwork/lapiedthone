@@ -10,6 +10,12 @@ public class Photo {
 
     public Photo() {
     }
+    public Photo(int id, String note, String file, int idAlbum) {
+        this.id = id;
+        this.note = note;
+        this.file = file;
+        this.idAlbum = idAlbum;
+    }
 
     public int getId() {
         return id;

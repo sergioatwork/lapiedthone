@@ -10,6 +10,12 @@ public class Album {
 
     public Album() {
     }
+    public Album(int id, String note, int idUser, int idRun) {
+        this.id = id;
+        this.note = note;
+        this.idUser = idUser;
+        this.idRun = idRun;
+    }
 
     public int getId() {
         return id;
@@ -31,9 +37,7 @@ public class Album {
         return idUser;
     }
 
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
-    }
+    public void setIdUser(int idUser) {this.idUser = idUser;}
 
     public int getIdRun() {
         return idRun;

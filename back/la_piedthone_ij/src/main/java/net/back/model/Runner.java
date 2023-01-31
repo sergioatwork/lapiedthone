@@ -15,6 +15,15 @@ public class Runner {
     public Runner() {
     }
 
+    public Runner(int idUser, int idRun, int contribution, int km, Date startDate, Date endDate) {
+        this.idUser = idUser;
+        this.idRun = idRun;
+        this.contribution = contribution;
+        this.km = km;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
+
     public int getIdUser() {
         return idUser;
     }

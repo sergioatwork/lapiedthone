@@ -17,6 +17,17 @@ public class Article {
 
     public Article() {
     }
+    public Article(int id, String title, String note, int idPhoto, Date startDate, Date endDate, boolean news, int idUser, int idRun) {
+        this.id = id;
+        this.title = title;
+        this.note = note;
+        this.idPhoto = idPhoto;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.news = news;
+        this.idUser = idUser;
+        this.idRun = idRun;
+    }
 
     public int getId() {
         return id;
