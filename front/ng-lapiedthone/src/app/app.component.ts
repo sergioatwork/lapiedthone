@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
 		this.router.events.subscribe(event => {
 			this.urlRoute = this.router.url.toString();
 			// console.log(this.urlRoute);
-			if (this.urlRoute.startsWith('/user')) { this.pageAccueil = false; } else { this.pageAccueil = true; }
+			if (this.urlRoute.startsWith('/user') || this.urlRoute.startsWith('/admin')) { this.pageAccueil = false; } else { this.pageAccueil = true; }
 		});
 	}
 }

@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+  public isLogin: boolean = true;
+	public isAdmin: boolean = true;
+
 }

@@ -3,6 +3,7 @@ package net.back.sqlrequest;
 import net.back.model.User;
 import net.back.utils.API;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class UserRq {
@@ -33,6 +34,18 @@ public class UserRq {
     public static boolean deleteOne(int id) {
         if (id < 0 || id >= API.getUserDB().size()) {return false;}
         API.getUserDB().remove(id);
+
+        return true;
+    }
+    public static boolean enableOne(int id) {
+        if (id < 0 || id >= API.getUserDB().size()) {return false;}
+        API.getUserDB().get(id).setExpDate(LocalDateTime.now().plusYears(10));
+
+        return true;
+    }
+    public static boolean disableOne(int id) {
+        if (id < 0 || id >= API.getUserDB().size()) {return false;}
+        API.getUserDB().get(id).setExpDate(LocalDateTime.now());
 
         return true;
     }

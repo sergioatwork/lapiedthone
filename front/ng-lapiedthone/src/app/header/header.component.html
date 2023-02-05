@@ -26,12 +26,20 @@
 					<a class="nav-link text-white fs-2" routerLink="/accueil/photo">Photos</a>
 				</li>
 			</ul>
-			<ul class="navbar-nav ms-5 mb-2 mb-lg-0">
+			<ul *ngIf="!isLogin" class="navbar-nav ms-5 mb-2 mb-lg-0">
 				<li class="nav-item">
 					<a class="nav-link text-white fs-2" routerLink="/user/create">S'inscrire</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link text-white fs-2" routerLink="/user/login">S'identifier</a>
+				</li>
+			</ul>
+			<ul *ngIf="isLogin" class="navbar-nav ms-5 mb-2 mb-lg-0">
+				<li *ngIf="isAdmin" class="nav-item">
+					<a class="nav-link text-white fs-2" routerLink="/admin">Admin</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-white fs-2" routerLink="/user/display">Profil</a>
 				</li>
 			</ul>
 		</div>

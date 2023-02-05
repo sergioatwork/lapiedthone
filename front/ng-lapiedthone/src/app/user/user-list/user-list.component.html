@@ -1,0 +1,45 @@
+<article class="d-flex flex-column">
+
+    <a class="d-block my-4 bg-success p-3 bg-gradient bg-opacity-75 border border-success border-3 rounded text-body text-decoration-none text-center fs-4 fw-bold" 
+        routerLink="/user/list">
+	    Création d'un Utilisateur.
+	</a>
+
+    <table class="table table-borderless table-striped my-3 bg-light bg-gradient bg-opacity-50 rounded shadow">
+        <thead class="bg-dark bg-opacity-50 bg-gradient text-white fw-bold">
+            <tr>
+                <th colspan="11" class="rounded-top text-center fs-4">Liste des utilisateurs</th>
+            </tr>
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Email</th>
+                <th>Depuis le</th>
+                <th>Expire le</th>
+                <th><i class="d-block bi bi-save2 border-primary rounded bg-primary text-white text-center p-1"></i></th>
+                <th><i class="d-block bi bi-eye border-info rounded bg-info text-white text-center p-1"></i></th>
+                <th><i class="d-block bi bi-unlock border-success rounded bg-success text-white text-center p-1"></i></th>
+                <th><i class="d-block bi bi-key border-warning rounded bg-warning text-white text-center p-1"></i></th>
+                <th><i class="d-block bi bi-trash3 border-danger rounded bg-danger text-white text-center p-1"></i></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of userList" class="{{ user.enable ? 'bg-light' : 'bg-danger' }} bg-opacity-50">
+                <td>{{ user.id }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.firstName }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.subDate }}</td>
+                <td>{{ user.expDate }}</td>
+                <td><button (click)="updateUser(user)" class="border-primary rounded bg-primary"><i class="d-block bi bi-save2 text-white p-1"></i></button></td>
+                <td><button (click)="editUser(user.id)" class="border-info rounded bg-info"><i class="d-block bi bi-eye text-white p-1"></i></button></td>
+                <td *ngIf="user.enable; then thenBlock else elseBlock"></td>
+                    <ng-template #thenBlock><td><button (click)="disableUser(user.id)" class="border-danger rounded bg-danger"><i class="d-block bi bi-lock text-white p-1"></i></button></td></ng-template>
+                    <ng-template #elseBlock><td><button (click)="enableUser(user.id)" class="border-success rounded bg-success"><i class="d-block bi bi-unlock text-white p-1"></i></button></td></ng-template>
+                <td><button (click)="resetPwUser(user.email)" class="border-warning rounded bg-warning"><i class="d-block bi bi-key text-white p-1"></i></button></td>
+                <td><button (click)="deleteUser(user.id)" class="border-danger rounded bg-danger"><i class="d-block bi bi-trash3 text-white p-1"></i></button></td>
+            </tr>
+        </tbody>
+    </table>
+</article>

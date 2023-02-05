@@ -4,6 +4,7 @@ import net.back.model.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -27,18 +28,18 @@ public class API {
         // Initialisation de l'application
 
         userDB = new ArrayList<User>();
-        // User(int id, String name, String firstName, String email, String password, boolean enable, boolean admin)
-        userDB.add(new User(0, "Admin", "Admin", "admin@toto.com", "abcdefghijklmnopqrstuvwxyz", true, true));
-        userDB.add(new User(1, "Dupont", "George", "george.dupond@tata.com", "abcdefghijklmnopqrstuvwxyz0123456789", true, false));
-        userDB.add(new User(2, "Durand", "Marie-Jeanne", "mj.durand@rrrrr.org", "abcdefghijklmnopqrstuvwxyz0123456789", true, false));
-        userDB.add(new User(3, "Ducon", "Marie-Lou", "marie-lou.ducon@pfff.net", "abcdefghijklmnopqrstuvwxyz0123456789", true, false));
-        userDB.add(new User(4, "Perrin", "Stéphane", "steph.perrin@tutu.com", "abcdefghijklmnopqrstuvwxyz0123456789", true, false));
-        userDB.add(new User(5, "Pignon", "Sandrine", "sandrine.pignon@pfff.net", "abcdefghijklmnopqrstuvwxyz0123456789", true, false));
-        userDB.add(new User(6, "Duce", "Jean-Claude", "jean-claude.duce@toto.com", "abcdefghijklmnopqrstuvwxyz0123456789", true, false));
-        userDB.add(new User(7, "Smith", "Marc", "msmith@tata.com", "abcdefghijklmnopqrstuvwxyz0123456789", true, false));
-        userDB.add(new User(8, "Yoyo", "Evelyne", "evelyne.yoyo@tata.com", "abcdefghijklmnopqrstuvwxyz0123456789", true, false));
-        userDB.add(new User(9, "Tuch", "Paulette", "paulette.tuch@tutu.com", "abcdefghijklmnopqrstuvwxyz0123456789", true, false));
-        userDB.add(new User(10, "Vif", "Jean-François", "jean-francois.vif@toto.com", "abcdefghijklmnopqrstuvwxyz0123456789", true, false));
+        // User(int id, String name, String firstName, String email, String password, LocalDateTime subDate, LocalDateTime expDate, boolean admin)
+        userDB.add(new User(0, "Admin", "Admin", "admin@toto.com", "abcdefghijklmnopqrstuvwxyz", LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2025-11-10T20:00:00"), true));
+        userDB.add(new User(1, "Dupont", "George", "george.dupond@tata.com", "abcdefghijklmnopqrstuvwxyz0123456789", LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2019-11-10T20:00:00"), false));
+        userDB.add(new User(2, "Durand", "Marie-Jeanne", "mj.durand@rrrrr.org", "abcdefghijklmnopqrstuvwxyz0123456789", LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2025-11-10T20:00:00"), false));
+        userDB.add(new User(3, "Ducon", "Marie-Lou", "marie-lou.ducon@pfff.net", "abcdefghijklmnopqrstuvwxyz0123456789", LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2025-11-10T20:00:00"), false));
+        userDB.add(new User(4, "Perrin", "Stéphane", "steph.perrin@tutu.com", "abcdefghijklmnopqrstuvwxyz0123456789", LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2025-11-10T20:00:00"), false));
+        userDB.add(new User(5, "Pignon", "Sandrine", "sandrine.pignon@pfff.net", "abcdefghijklmnopqrstuvwxyz0123456789", LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2020-11-10T20:00:00"), false));
+        userDB.add(new User(6, "Duce", "Jean-Claude", "jean-claude.duce@toto.com", "abcdefghijklmnopqrstuvwxyz0123456789", LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2025-11-10T20:00:00"), false));
+        userDB.add(new User(7, "Smith", "Marc", "msmith@tata.com", "abcdefghijklmnopqrstuvwxyz0123456789", LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2025-11-10T20:00:00"), false));
+        userDB.add(new User(8, "Yoyo", "Evelyne", "evelyne.yoyo@tata.com", "abcdefghijklmnopqrstuvwxyz0123456789", LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2025-11-10T20:00:00"), false));
+        userDB.add(new User(9, "Tuch", "Paulette", "paulette.tuch@tutu.com", "abcdefghijklmnopqrstuvwxyz0123456789", LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2025-11-10T20:00:00"), false));
+        userDB.add(new User(10, "Vif", "Jean-François", "jean-francois.vif@toto.com", "abcdefghijklmnopqrstuvwxyz0123456789", LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2025-11-10T20:00:00"), false));
         userAutoIncrement = userDB.size()-1;
         System.out.println("ArrayList userDB de User, initialisée !!!");
 
@@ -58,18 +59,18 @@ public class API {
 
         runnerDB = new ArrayList<Runner>();
         // Runner(int idUser, int idRun, int contribution, int km, Date startDate, Date endDate)
-        runnerDB.add(new Runner(1, 1, 42, 3,  new Date(2018-11-10-14-30-00),  new Date(2018-11-10-20-00-00)));
-        runnerDB.add(new Runner(0, 0, 42, 3, new Date(2018-11-10-15-00-00), new Date(2018-11-10-20-00-00)));
-        runnerDB.add(new Runner(1, 1, 24, 3, new Date(2018-11-10-15-00-00), new Date(2018-11-10-20-00-00)));
-        runnerDB.add(new Runner(2, 2, 85, 4, new Date(2018-11-10-15-00-00), new Date(2018-11-10-20-00-00)));
-        runnerDB.add(new Runner(3, 3, 6, 2, new Date(2018-11-10-15-00-00), new Date(2018-11-10-20-00-00)));
-        runnerDB.add(new Runner(4, 3, 78, 1, new Date(2018-11-10-15-00-00), new Date(2018-11-10-20-00-00)));
-        runnerDB.add(new Runner(5, 3, 12, 3, new Date(2018-11-10-15-00-00), new Date(2018-11-10-20-00-00)));
-        runnerDB.add(new Runner(6, 1, 10, 6, new Date(2018-11-10-15-00-00), new Date(2018-11-10-20-00-00)));
-        runnerDB.add(new Runner(7, 3, 10, 4, new Date(2018-11-10-15-00-00), new Date(2018-11-10-20-00-00)));
-        runnerDB.add(new Runner(8, 2, 21, 5, new Date(2018-11-10-15-00-00), new Date(2018-11-10-20-00-00)));
-        runnerDB.add(new Runner(9, 2, 32, 6, new Date(2018-11-10-15-00-00), new Date(2018-11-10-20-00-00)));
-        runnerDB.add(new Runner(10, 2, 9, 3, new Date(2018-11-10-15-00-00), new Date(2018-11-10-20-00-00)));
+        runnerDB.add(new Runner(1, 1, 42, 3,  LocalDateTime.parse("2018-11-10T14:30:00"),  LocalDateTime.parse("2018-11-10T20:00:00")));
+        runnerDB.add(new Runner(0, 0, 42, 3, LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2018-11-10T20:00:00")));
+        runnerDB.add(new Runner(1, 1, 24, 3, LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2018-11-10T20:00:00")));
+        runnerDB.add(new Runner(2, 2, 85, 4, LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2018-11-10T20:00:00")));
+        runnerDB.add(new Runner(3, 3, 6, 2, LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2018-11-10T20:00:00")));
+        runnerDB.add(new Runner(4, 3, 78, 1, LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2018-11-10T20:00:00")));
+        runnerDB.add(new Runner(5, 3, 12, 3, LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2018-11-10T20:00:00")));
+        runnerDB.add(new Runner(6, 1, 10, 6, LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2018-11-10T20:00:00")));
+        runnerDB.add(new Runner(7, 3, 10, 4, LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2018-11-10T20:00:00")));
+        runnerDB.add(new Runner(8, 2, 21, 5, LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2018-11-10T20:00:00")));
+        runnerDB.add(new Runner(9, 2, 32, 6, LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2018-11-10T20:00:00")));
+        runnerDB.add(new Runner(10, 2, 9, 3, LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2018-11-10T20:00:00")));
         runnerAutoIncrement = runnerDB.size()-1;
         System.out.println("ArrayList runnerDB de Runner, initialisée !!!");
 

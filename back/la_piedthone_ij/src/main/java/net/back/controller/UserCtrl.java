@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/user")
 public class UserCtrl {
     User user = new User();
@@ -70,6 +71,22 @@ public class UserCtrl {
         return UserRq.deleteOne(id);
     }
 
+    // http://localhost:8080/user/enable
+    @PatchMapping("/enable/{id}")
+    public boolean enableUser(@PathVariable("id") int id) {
+        System.out.println("/user/enable" + id);
+
+        return UserRq.enableOne(id);
+    }
+
+    // http://localhost:8080/user/disable
+    @PatchMapping("/disable/{id}")
+    public boolean disableUser(@PathVariable("id") int id) {
+        System.out.println("/user/disable" + id);
+
+        return UserRq.disableOne(id);
+    }
+
     // http://localhost:8080/user/login
     @PostMapping("/login")
     public boolean loginUser(@RequestBody Login login) {
@@ -88,7 +105,7 @@ public class UserCtrl {
     // http://localhost:8080/user/reset
     @PostMapping("/reset")
     public boolean resetUser(@RequestBody Login login) {
-        System.out.println("/user/login");
+        System.out.println("/user/reset");
         System.out.println("ID: #" + login.getId() + "# PassWord: #" + login.getPwd() + "#");
 
         // vérification dans la DB de l'identifiant
