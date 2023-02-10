@@ -1,7 +1,7 @@
 package net.back.controller;
 
 import net.back.model.Article;
-import net.back.sqlrequest.ArticleRq;
+import net.back.service.ArticleService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ public class ArticleCtrl {
 
         article = newArticle;
         // si OK, enregistrement du Article dans la DB et retour TRUE
-        if (true) {return ArticleRq.addOne(article);}
+        if (true) {return ArticleService.addOne(article);}
 
         // si KO, retour FALSE
         return false;
@@ -31,7 +31,7 @@ public class ArticleCtrl {
         System.out.println("/article/read/" + id);
 
         // Récupérer le Article avec l'id dans la DB
-        article = ArticleRq.readOne(id);
+        article = ArticleService.readOne(id);
 
         return article;
     }
@@ -43,7 +43,7 @@ public class ArticleCtrl {
 
         ArrayList<Article> listArticle = new ArrayList<Article>();
         // Récupérer l'ensemble des Article dans la DB
-        listArticle = ArticleRq.readAll();
+        listArticle = ArticleService.readAll();
 
         // renvoyer une liste de Article
         return listArticle;
@@ -56,7 +56,7 @@ public class ArticleCtrl {
 
         article = updateArticle;
         // si OK, enregistrement du Article dans la DB et retour TRUE
-        if (true) {return ArticleRq.updateOne(article);}
+        if (true) {return ArticleService.updateOne(article);}
 
         // si KO, retour FALSE
         return false;
@@ -67,6 +67,6 @@ public class ArticleCtrl {
     public boolean deleteArticle(@PathVariable("id") int id) {
         System.out.println("/article/delete/" + id);
 
-        return ArticleRq.deleteOne(id);
+        return ArticleService.deleteOne(id);
     }
 }

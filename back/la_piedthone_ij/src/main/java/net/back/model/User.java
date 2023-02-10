@@ -1,11 +1,17 @@
 package net.back.model;
 
-import java.time.LocalDateTime;
+import jakarta.persistence.*;
 
-// tab_user
+import java.time.LocalDateTime;
+import java.util.List;
+
+@Entity
+@Table(name = "tab_user")
 public class User {
-    private static final String SQL_TABLE = "tab_user";
-    private int id;                 // id int(10) unsigned NOT NULL AUTO_INCREMENT
+//    private static final String SQL_TABLE = "tab_user";
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int userId;                 // id int(10) unsigned NOT NULL AUTO_INCREMENT
     private String name;            // name varchar(20) DEFAULT NULL
     private String firstName;       // first_name varchar(20) DEFAULT NULL
     private String email;           // email varchar(100) DEFAULT NULL
@@ -14,10 +20,13 @@ public class User {
     private LocalDateTime expDate;           // exp_date datetime NOT NULL DEFAULT '9999-12-31 23:59:59'
     private boolean admin;          // admin tinyint(1) NOT NULL DEFAULT 0
 
+    @OneToMany(mappedBy = "runId", fetch = FetchType.LAZY)
+    private List<Runner> runner;
+
     public User() {
     }
-    public User(int id, String name, String firstName, String email, String password, LocalDateTime subDate, LocalDateTime expDate, boolean admin) {
-        this.id = id;
+    public User(int userId, String name, String firstName, String email, String password, LocalDateTime subDate, LocalDateTime expDate, boolean admin) {
+        this.userId = userId;
         this.name = name;
         this.firstName = firstName;
         this.email = email;
@@ -27,11 +36,11 @@ public class User {
         this.admin = admin;
     }
 
-    public int getId() {
-        return id;
+    public int getUserId() {
+        return userId;
     }
-    public void setId(int id) {
-        this.id = id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
     public String getName() {
         return name;

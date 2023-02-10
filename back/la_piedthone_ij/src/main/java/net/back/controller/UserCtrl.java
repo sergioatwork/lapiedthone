@@ -2,90 +2,81 @@ package net.back.controller;
 
 import net.back.model.Login;
 import net.back.model.User;
-import net.back.sqlrequest.UserRq;
+import net.back.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @CrossOrigin
 @RequestMapping("/user")
 public class UserCtrl {
-    User user = new User();
+    @Autowired
+    private UserService userService;
+    private User user = new User();
+
+    // http://localhost:8080/user/read
+    @GetMapping("/read")
+    public List<User> readAllUser() {
+            System.out.println("/user/read");
+        return userService.readAll();
+    }
+
+    // http://localhost:8080/user/read/userId
+    @GetMapping("/read/{userId}")
+    public User readUser(@PathVariable("userId") int userId) {
+        System.out.println("/user/read/" + userId);
+        // Récupérer le User avec l'userId dans la DB
+        return userService.readOne(userId);
+    }
 
     // http://localhost:8080/user/create
     @PostMapping("/create")
     public boolean createUser(@RequestBody User newUser) {
-        System.out.println("/user/create");
-
-        user = newUser;
-        // si OK, enregistrement du User dans la DB et retour TRUE
-        if (true) {return UserRq.addOne(user);}
-
-        // si KO, retour FALSE
+            System.out.println("/user/create");
+        // si newUser non null, envoi de newUser au Service pour ajout dans la DB
+        if (newUser != null) {
+            newUser.setUserId(0);
+            return userService.addOne(newUser) != null;}
+        // si  newUser null retour FALSE
         return false;
-    }
-
-    // http://localhost:8080/user/read/id
-    @GetMapping("/read/{id}")
-    public User readUser(@PathVariable("id") int id) {
-        System.out.println("/user/read/" + id);
-
-        // Récupérer le User avec l'id dans la DB
-        user = UserRq.readOne(id);
-
-        return user;
-    }
-
-    // http://localhost:8080/user/read
-    @GetMapping("/read")
-    public ArrayList<User> readAllUser() {
-        System.out.println("/user/read");
-
-        ArrayList<User> listUser = new ArrayList<User>();
-
-        // Récupérer l'ensemble des User dans la DB
-        listUser = UserRq.readAll();
-
-        // renvoyer une liste de User
-        return listUser;
     }
 
     // http://localhost:8080/user/update
     @PutMapping("/update")
     public boolean updateUser(@RequestBody User updateUser) {
-        System.out.println("/user/update");
-
-        user = updateUser;
-        // si OK, enregistrement du User dans la DB et retour TRUE
-        if (true) {return UserRq.updateOne(user);}
-
-        // si KO, retour FALSE
+            System.out.println("/user/update");
+        // si updateUser non null, envoi de updateUser au Service pour modification dans la DB
+        if (updateUser != null) {
+            return userService.updateOne(updateUser) != null;}
+        // si  updateUser null retour FALSE
         return false;
     }
 
-    // http://localhost:8080/user/delete/id
-    @DeleteMapping("/delete/{id}")
-    public boolean deleteUser(@PathVariable("id") int id) {
-        System.out.println("/user/delete/" + id);
-
-        return UserRq.deleteOne(id);
+    // http://localhost:8080/user/delete/userId
+    @DeleteMapping("/delete/{userId}")
+    public boolean deleteUser(@PathVariable("userId") int userId) {
+            System.out.println("/user/delete/" + userId);
+        return userService.deleteOne(userId);
     }
 
     // http://localhost:8080/user/enable
-    @PatchMapping("/enable/{id}")
-    public boolean enableUser(@PathVariable("id") int id) {
-        System.out.println("/user/enable" + id);
-
-        return UserRq.enableOne(id);
+    @PatchMapping("/enable/{userId}")
+    public boolean enableUser(@PathVariable("userId") int userId) {
+            System.out.println("/user/enable/" + userId);
+        return userService.enableOne(userId);
     }
 
     // http://localhost:8080/user/disable
-    @PatchMapping("/disable/{id}")
-    public boolean disableUser(@PathVariable("id") int id) {
-        System.out.println("/user/disable" + id);
-
-        return UserRq.disableOne(id);
+    @PatchMapping("/disable/{userId}")
+    public boolean disableUser(@PathVariable("userId") int userId) {
+            System.out.println("/user/disable/" + userId);
+        return userService.disableOne(userId);
     }
+
+
+    ////////////////    User Authentification    ////////////////
+
 
     // http://localhost:8080/user/login
     @PostMapping("/login")

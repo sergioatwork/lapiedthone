@@ -1,6 +1,11 @@
 package net.back.utils;
 
 import net.back.model.*;
+import net.back.repository.RunnerRepository;
+import net.back.service.RunService;
+import net.back.service.RunnerService;
+import net.back.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,11 +29,29 @@ public class API {
     private static ArrayList<Article> articleDB;
     private static int articleAutoIncrement;
 
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private RunService runService;
+    @Autowired
+    private RunnerService runnerService;
+    @GetMapping("/db")
+    public void peuplementDB() {
+        System.out.println("/db");
+        for (User u : userDB) {
+            u.setUserId(0);
+            userService.addOne(u);}
+        for (Run r : runDB) {
+            r.setRunId(0);
+            runService.addOne(r);}
+        for (Runner r : runnerDB) {
+            runnerService.addOne(r);}
+    }
     public static void init() {
         // Initialisation de l'application
 
         userDB = new ArrayList<User>();
-        // User(int id, String name, String firstName, String email, String password, LocalDateTime subDate, LocalDateTime expDate, boolean admin)
+        // User(int userId, String name, String firstName, String email, String password, LocalDateTime subDate, LocalDateTime expDate, boolean admin)
         userDB.add(new User(0, "Admin", "Admin", "admin@toto.com", "abcdefghijklmnopqrstuvwxyz", LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2025-11-10T20:00:00"), true));
         userDB.add(new User(1, "Dupont", "George", "george.dupond@tata.com", "abcdefghijklmnopqrstuvwxyz0123456789", LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2019-11-10T20:00:00"), false));
         userDB.add(new User(2, "Durand", "Marie-Jeanne", "mj.durand@rrrrr.org", "abcdefghijklmnopqrstuvwxyz0123456789", LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2025-11-10T20:00:00"), false));
@@ -44,32 +67,32 @@ public class API {
         System.out.println("ArrayList userDB de User, initialisée !!!");
 
         runDB = new ArrayList<Run>();
-        // Run(int id, String name, char type, String description, Date startDate, Date endDate)
-        runDB.add(new Run(0, "Piethone 2018 - 2km", 'p', "Course de 2 Km à l'Hôpital Pitié Salpêtrière", new Date(2018-11-10-15-00-00), new Date(2018-11-10-20-00-00)));
-        runDB.add(new Run(1, "Piethone 2018 - 4km", 'p', "Course de 4 Km à l'Hôpital Pitié Salpêtrière",  new Date(2018-11-10-14-30-00),  new Date(2018-11-10-20-00-00)));
-        runDB.add(new Run(2, "Piethone 2018 - 6km", 'p', "Course de 6 Km à l'Hôpital Pitié Salpêtrière",  new Date(2018-11-10-14-00-00),  new Date(2018-11-10-20-00-00)));
-        runDB.add(new Run(3, "Piethone 2018 - 8km", 'p', "Course de 8 Km à l'Hôpital Pitié Salpêtrière",  new Date(2018-11-10-13-30-00),  new Date(2018-11-10-20-00-00)));
-        runDB.add(new Run(4, "Piethone 2018 - 10km", 'p', "Course de 10 Km à l'Hôpital Pitié Salpêtrière",  new Date(2018-11-10-13-00-00),  new Date(2018-11-10-20-00-00)));
-        runDB.add(new Run(5, "Piethone 2019 - 2km", 'v', "Course de 2 Km - Lieu libre",  new Date(2019-11-06-14-00-00),  new Date(2018-11-06-20-00-00)));
-        runDB.add(new Run(6, "Piethone 2019 - 4km", 'v', "Course de 4 Km - Lieu libre",  new Date(2019-11-06-14-00-00),  new Date(2018-11-06-20-00-00)));
-        runDB.add(new Run(7, "Piethone 2019 - 4km", 'v', "Course de 4 Km - Lieu libre ou en salle",  new Date(2023-11-12-14-00-00),  new Date(2018-11-12-20-00-00)));
-        runDB.add(new Run(8, "Piethone 2019 - 6km", 'v', "Course de 6 Km - Lieu libre ou en salle",  new Date(2023-11-12-13-00-00),  new Date(2018-11-12-20-00-00)));
+        // Run(int runId, String name, char type, String description, LocalDateTime startDate, LocalDateTime endDate)
+        runDB.add(new Run(0, "Piethone 2018 - 2km", 'p', "Course de 2 Km à l'Hôpital Pitié Salpêtrière", LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2018-11-10T20:00:00")));
+        runDB.add(new Run(1, "Piethone 2018 - 4km", 'p', "Course de 4 Km à l'Hôpital Pitié Salpêtrière", LocalDateTime.parse("2018-11-10T14:30:00"), LocalDateTime.parse("2018-11-10T20:00:00")));
+        runDB.add(new Run(2, "Piethone 2018 - 6km", 'p', "Course de 6 Km à l'Hôpital Pitié Salpêtrière", LocalDateTime.parse("2018-11-10T14:00:00"), LocalDateTime.parse("2018-11-10T20:00:00")));
+        runDB.add(new Run(3, "Piethone 2018 - 8km", 'p', "Course de 8 Km à l'Hôpital Pitié Salpêtrière", LocalDateTime.parse("2018-11-10T13:30:00"), LocalDateTime.parse("2018-11-10T20:00:00")));
+        runDB.add(new Run(4, "Piethone 2018 - 10km", 'p', "Course de 10 Km à l'Hôpital Pitié Salpêtrière", LocalDateTime.parse("2018-11-10T13:00:00"), LocalDateTime.parse("2018-11-10T20:00:00")));
+        runDB.add(new Run(5, "Piethone 2019 - 2km", 'v', "Course de 2 Km - Lieu libre", LocalDateTime.parse("2019-11-06T14:00:00"), LocalDateTime.parse("2018-11-06T20:00:00")));
+        runDB.add(new Run(6, "Piethone 2019 - 4km", 'v', "Course de 4 Km - Lieu libre", LocalDateTime.parse("2019-11-06T14:00:00"), LocalDateTime.parse("2018-11-06T20:00:00")));
+        runDB.add(new Run(7, "Piethone 2019 - 4km", 'v', "Course de 4 Km - Lieu libre ou en salle", LocalDateTime.parse("2023-11-12T14:00:00"), LocalDateTime.parse("2018-11-12T20:00:00")));
+        runDB.add(new Run(8, "Piethone 2019 - 6km", 'v', "Course de 6 Km - Lieu libre ou en salle", LocalDateTime.parse("2023-11-12T13:00:00"), LocalDateTime.parse("2018-11-12T20:00:00")));
         runAutoIncrement = runDB.size()-1;
         System.out.println("ArrayList runDB de Run, initialisée !!!");
 
         runnerDB = new ArrayList<Runner>();
-        // Runner(int idUser, int idRun, int contribution, int km, Date startDate, Date endDate)
-        runnerDB.add(new Runner(1, 1, 42, 3,  LocalDateTime.parse("2018-11-10T14:30:00"),  LocalDateTime.parse("2018-11-10T20:00:00")));
-        runnerDB.add(new Runner(0, 0, 42, 3, LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2018-11-10T20:00:00")));
-        runnerDB.add(new Runner(1, 1, 24, 3, LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2018-11-10T20:00:00")));
-        runnerDB.add(new Runner(2, 2, 85, 4, LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2018-11-10T20:00:00")));
-        runnerDB.add(new Runner(3, 3, 6, 2, LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2018-11-10T20:00:00")));
-        runnerDB.add(new Runner(4, 3, 78, 1, LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2018-11-10T20:00:00")));
-        runnerDB.add(new Runner(5, 3, 12, 3, LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2018-11-10T20:00:00")));
-        runnerDB.add(new Runner(6, 1, 10, 6, LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2018-11-10T20:00:00")));
-        runnerDB.add(new Runner(7, 3, 10, 4, LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2018-11-10T20:00:00")));
-        runnerDB.add(new Runner(8, 2, 21, 5, LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2018-11-10T20:00:00")));
-        runnerDB.add(new Runner(9, 2, 32, 6, LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2018-11-10T20:00:00")));
+        // Runner(int userId, int runId, int contribution, int km, Date startDate, Date endDate)
+        runnerDB.add(new Runner(11, 1, 42, 3,  LocalDateTime.parse("2018-11-10T14:30:00"),  LocalDateTime.parse("2018-11-10T20:00:00")));
+        runnerDB.add(new Runner(10, 6, 42, 3, LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2018-11-10T20:00:00")));
+        runnerDB.add(new Runner(11, 1, 24, 3, LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2018-11-10T20:00:00")));
+        runnerDB.add(new Runner(12, 2, 85, 4, LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2018-11-10T20:00:00")));
+        runnerDB.add(new Runner(13, 3, 6, 2, LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2018-11-10T20:00:00")));
+        runnerDB.add(new Runner(15, 3, 78, 1, LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2018-11-10T20:00:00")));
+        runnerDB.add(new Runner(15, 3, 12, 3, LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2018-11-10T20:00:00")));
+        runnerDB.add(new Runner(16, 1, 10, 6, LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2018-11-10T20:00:00")));
+        runnerDB.add(new Runner(17, 3, 10, 4, LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2018-11-10T20:00:00")));
+        runnerDB.add(new Runner(18, 2, 21, 5, LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2018-11-10T20:00:00")));
+        runnerDB.add(new Runner(19, 2, 32, 6, LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2018-11-10T20:00:00")));
         runnerDB.add(new Runner(10, 2, 9, 3, LocalDateTime.parse("2018-11-10T15:00:00"), LocalDateTime.parse("2018-11-10T20:00:00")));
         runnerAutoIncrement = runnerDB.size()-1;
         System.out.println("ArrayList runnerDB de Runner, initialisée !!!");

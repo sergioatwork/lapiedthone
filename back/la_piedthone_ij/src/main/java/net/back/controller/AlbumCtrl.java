@@ -1,7 +1,7 @@
 package net.back.controller;
 
 import net.back.model.Album;
-import net.back.sqlrequest.AlbumRq;
+import net.back.service.AlbumService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ public class AlbumCtrl {
 
         album = newAlbum;
         // si OK, enregistrement du Album dans la DB et retour TRUE
-        if (true) {return AlbumRq.addOne(album);}
+        if (true) {return AlbumService.addOne(album);}
 
         // si KO, retour FALSE
         return false;
@@ -31,7 +31,7 @@ public class AlbumCtrl {
         System.out.println("/album/read/" + id);
 
         // Récupérer le Album avec l'id dans la DB
-        album = AlbumRq.readOne(id);
+        album = AlbumService.readOne(id);
 
         return album;
     }
@@ -43,7 +43,7 @@ public class AlbumCtrl {
 
         ArrayList<Album> listAlbum = new ArrayList<Album>();
         // Récupérer l'ensemble des Album dans la DB
-        listAlbum = AlbumRq.readAll();
+        listAlbum = AlbumService.readAll();
 
         // renvoyer une liste de Album
         return listAlbum;
@@ -56,7 +56,7 @@ public class AlbumCtrl {
 
         album = updateAlbum;
         // si OK, enregistrement du Album dans la DB et retour TRUE
-        if (true) {return AlbumRq.updateOne(album);}
+        if (true) {return AlbumService.updateOne(album);}
 
         // si KO, retour FALSE
         return false;
@@ -67,6 +67,6 @@ public class AlbumCtrl {
     public boolean deleteAlbum(@PathVariable("id") int id) {
         System.out.println("/album/delete/" + id);
 
-        return AlbumRq.deleteOne(id);
+        return AlbumService.deleteOne(id);
     }
 }

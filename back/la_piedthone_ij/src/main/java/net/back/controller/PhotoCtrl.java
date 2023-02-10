@@ -1,7 +1,7 @@
 package net.back.controller;
 
 import net.back.model.Photo;
-import net.back.sqlrequest.PhotoRq;
+import net.back.service.PhotoService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ public class PhotoCtrl {
 
         photo = newPhoto;
         // si OK, enregistrement du Photo dans la DB et retour TRUE
-        if (true) {return PhotoRq.addOne(photo);}
+        if (true) {return PhotoService.addOne(photo);}
 
         // si KO, retour FALSE
         return false;
@@ -31,7 +31,7 @@ public class PhotoCtrl {
         System.out.println("/photo/read/" + id);
 
         // Récupérer le Photo avec l'id dans la DB
-        photo = PhotoRq.readOne(id);
+        photo = PhotoService.readOne(id);
 
         return photo;
     }
@@ -43,7 +43,7 @@ public class PhotoCtrl {
 
         ArrayList<Photo> listPhoto = new ArrayList<Photo>();
         // Récupérer l'ensemble des Photo dans la DB
-        listPhoto = PhotoRq.readAll();
+        listPhoto = PhotoService.readAll();
 
         // renvoyer une liste de Photo
         return listPhoto;
@@ -56,7 +56,7 @@ public class PhotoCtrl {
 
         photo = updatePhoto;
         // si OK, enregistrement du Photo dans la DB et retour TRUE
-        if (true) {return PhotoRq.updateOne(photo);}
+        if (true) {return PhotoService.updateOne(photo);}
 
         // si KO, retour FALSE
         return false;
@@ -67,6 +67,6 @@ public class PhotoCtrl {
     public boolean deletePhoto(@PathVariable("id") int id) {
         System.out.println("/photo/delete/" + id);
 
-        return PhotoRq.deleteOne(id);
+        return PhotoService.deleteOne(id);
     }
 }
