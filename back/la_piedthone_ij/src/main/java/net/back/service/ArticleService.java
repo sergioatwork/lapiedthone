@@ -1,39 +1,39 @@
 package net.back.service;
 
 import net.back.model.Article;
-import net.back.utils.API;
+import net.back.repository.ArticleRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.util.List;
 
+@Service
 public class ArticleService {
-    public static ArrayList<Article> readAll() {
-        ArrayList<Article> listArticle = new ArrayList<Article>();
-        listArticle = API.getArticleDB();
+    @Autowired
+    private ArticleRepository articleRepo;
 
-        return listArticle;
+    public List<Article> readAll() {
+        return articleRepo.findAll();
     }
-    public static Article readOne(int id) {
-        Article article = new Article();
-        if (id < 0 || id >= API.getArticleDB().size()) {return null;}
-        article = API.getArticleDB().get(id);
-
-        return article;
+    public Article readOne(int articleId) {
+        return  articleRepo.findById(articleId).orElse(null);
     }
-    public static boolean addOne(Article newArticle) {
-        newArticle.setId(API.incArticleAutoIncrement());
-        API.getArticleDB().add(newArticle.getId(), newArticle);
-
-        return true;
+    public Article addOne(Article newArticle) {
+        // prévoir controle des infos du User
+        articleRepo.save(newArticle);
+        return newArticle;
     }
-    public static boolean updateOne(Article newArticle) {
-        API.getArticleDB().set(newArticle.getId(), newArticle);
-
-        return true;
+    public Article updateOne(Article updateArticle) {
+        articleRepo.save(updateArticle);
+        return updateArticle;
     }
-    public static boolean deleteOne(int id) {
-        if (id < 0 || id >= API.getArticleDB().size()) {return false;}
-        API.getArticleDB().remove(id);
-
-        return true;
+    public boolean deleteOne(int articleId) {
+        try {
+            articleRepo.deleteById(articleId);
+            return true;
+        }
+        catch (Exception e) {
+            return false;
+        }
     }
 }

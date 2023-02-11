@@ -1,39 +1,39 @@
 package net.back.service;
 
 import net.back.model.Photo;
-import net.back.utils.API;
+import net.back.repository.PhotoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.util.List;
 
+@Service
 public class PhotoService {
-    public static ArrayList<Photo> readAll() {
-        ArrayList<Photo> listPhoto = new ArrayList<Photo>();
-        listPhoto = API.getPhotoDB();
+    @Autowired
+    private PhotoRepository photoRepo;
 
-        return listPhoto;
+    public List<Photo> readAll() {
+        return photoRepo.findAll();
     }
-    public static Photo readOne(int id) {
-        Photo photo = new Photo();
-        if (id < 0 || id >= API.getPhotoDB().size()) {return null;}
-        photo = API.getPhotoDB().get(id);
-
-        return photo;
+    public Photo readOne(int photoId) {
+        return  photoRepo.findById(photoId).orElse(null);
     }
-    public static boolean addOne(Photo newPhoto) {
-        newPhoto.setId(API.incPhotoAutoIncrement());
-        API.getPhotoDB().add(newPhoto.getId(), newPhoto);
-
-        return true;
+    public Photo addOne(Photo newPhoto) {
+        // prévoir controle des infos du User
+        photoRepo.save(newPhoto);
+        return newPhoto;
     }
-    public static boolean updateOne(Photo newPhoto) {
-        API.getPhotoDB().set(newPhoto.getId(), newPhoto);
-
-        return true;
+    public Photo updateOne(Photo updatePhoto) {
+        photoRepo.save(updatePhoto);
+        return updatePhoto;
     }
-    public static boolean deleteOne(int id) {
-        if (id < 0 || id >= API.getPhotoDB().size()) {return false;}
-        API.getPhotoDB().remove(id);
-
-        return true;
+    public boolean deleteOne(int photoId) {
+        try {
+            photoRepo.deleteById(photoId);
+            return true;
+        }
+        catch (Exception e) {
+            return false;
+        }
     }
 }

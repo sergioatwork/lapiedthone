@@ -1,39 +1,39 @@
 package net.back.service;
 
 import net.back.model.Album;
-import net.back.utils.API;
+import net.back.repository.AlbumRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.util.List;
 
+@Service
 public class AlbumService {
-    public static ArrayList<Album> readAll() {
-        ArrayList<Album> listAlbum = new ArrayList<Album>();
-        listAlbum = API.getAlbumDB();
+    @Autowired
+    private AlbumRepository albumRepo;
 
-        return listAlbum;
+    public List<Album> readAll() {
+        return albumRepo.findAll();
     }
-    public static Album readOne(int id) {
-        Album album = new Album();
-        if (id < 0 || id >= API.getAlbumDB().size()) {return null;}
-        album = API.getAlbumDB().get(id);
-
-        return album;
+    public Album readOne(int albumId) {
+        return  albumRepo.findById(albumId).orElse(null);
     }
-    public static boolean addOne(Album newAlbum) {
-        newAlbum.setId(API.incAlbumAutoIncrement());
-        API.getAlbumDB().add(newAlbum.getId(), newAlbum);
-
-        return true;
+    public Album addOne(Album newAlbum) {
+        // prévoir controle des infos du User
+        albumRepo.save(newAlbum);
+        return newAlbum;
     }
-    public static boolean updateOne(Album newAlbum) {
-        API.getAlbumDB().set(newAlbum.getId(), newAlbum);
-
-        return true;
+    public Album updateOne(Album updateAlbum) {
+        albumRepo.save(updateAlbum);
+        return updateAlbum;
     }
-    public static boolean deleteOne(int id) {
-        if (id < 0 || id >= API.getAlbumDB().size()) {return false;}
-        API.getAlbumDB().remove(id);
-
-        return true;
+    public boolean deleteOne(int albumId) {
+        try {
+            albumRepo.deleteById(albumId);
+            return true;
+        }
+        catch (Exception e) {
+            return false;
+        }
     }
 }

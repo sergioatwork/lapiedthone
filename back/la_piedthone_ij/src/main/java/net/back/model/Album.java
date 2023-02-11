@@ -1,49 +1,37 @@
 package net.back.model;
 
-// tab_album
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "tab_album")
 public class Album {
-    private static final String SQL_TABLE = "tab_album";
-    private int id;                 // id int(10) unsigned NOT NULL AUTO_INCREMENT
+//    private static final String SQL_TABLE = "tab_album";
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int albumId;                 // id int(10) unsigned NOT NULL AUTO_INCREMENT
     private String note;            // note varchar(256) DEFAULT NULL
-    private int idUser;             // id_user int(10) unsigned NOT NULL
-    private int idRun;              //id_run int(10) unsigned DEFAULT NULL
+    private int userId;             // id_user int(10) unsigned NOT NULL
+    private int runId;              //id_run int(10) unsigned DEFAULT NULL
 
     public Album() {
     }
-    public Album(int id, String note, int idUser, int idRun) {
-        this.id = id;
+    public Album(int albumId, String note, int userId, int runId) {
+        this.albumId = albumId;
         this.note = note;
-        this.idUser = idUser;
-        this.idRun = idRun;
+        this.userId = userId;
+        this.runId = runId;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getNote() {
-        return note;
-    }
-
-    public void setNote(String note) {
-        this.note = note;
-    }
-
-    public int getIdUser() {
-        return idUser;
-    }
-
-    public void setIdUser(int idUser) {this.idUser = idUser;}
-
-    public int getIdRun() {
-        return idRun;
-    }
-
-    public void setIdRun(int idRun) {
-        this.idRun = idRun;
-    }
+    public int getAlbumId() {return albumId;}
+    public void setAlbumId(int albumId) {this.albumId = albumId;}
+    public String getNote() {return note;}
+    public void setNote(String note) {this.note = note;}
+    public int getUserId() {return userId;}
+    public void setUserId(int userId) {this.userId = userId;}
+    public int getRunId() {return runId;}
+    public void setRunId(int runId) {this.runId = runId;}
 }
