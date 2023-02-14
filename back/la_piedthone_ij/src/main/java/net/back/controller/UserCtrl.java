@@ -1,5 +1,6 @@
 package net.back.controller;
 
+import jakarta.servlet.http.HttpSession;
 import net.back.model.Login;
 import net.back.model.User;
 import net.back.service.UserService;
@@ -80,16 +81,16 @@ public class UserCtrl {
 
     // http://localhost:8080/user/login
     @PostMapping("/login")
-    public boolean loginUser(@RequestBody Login login) {
+    public boolean loginUser(@RequestBody Login login, HttpSession session) {
         System.out.println("/user/login");
         System.out.println("ID: #" + login.getId() + "# PassWord: #" + login.getPwd() + "#");
 
         // vérification dans la DB de l'identifiant et du mot de passe
 
         // si OK, chargement du User dans la Session et retour TRUE
-        if (true) {return true;}
-
-        // si KO, retour FALSE
+        if (login.getId() != null) {
+            return userService.login(login, session) != null;}
+        // si  login id null retour FALSE
         return false;
     }
 

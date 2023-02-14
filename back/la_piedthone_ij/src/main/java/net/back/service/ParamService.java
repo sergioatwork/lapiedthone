@@ -38,4 +38,8 @@ public class ParamService {
             return false;
         }
     }
+    public boolean initApp() {
+        paramRepo.findAll();
+        return true;
+    }
 }

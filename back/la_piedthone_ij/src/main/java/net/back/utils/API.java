@@ -1,5 +1,6 @@
 package net.back.utils;
 
+import jakarta.servlet.http.HttpSession;
 import net.back.model.*;
 import net.back.repository.RunnerRepository;
 import net.back.service.RunService;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Objects;
 
 @RestController
 public class API {
@@ -123,6 +125,29 @@ public class API {
     @GetMapping("/test")
     public String testGet() {
         System.out.println("/test");
+        return "Hello !!! Everything seem OK ;-)";
+    }
+    ////////////////    Route Affichage SessionID
+    @GetMapping("/sessionid")
+    public String sessionIdGet( HttpSession session) {
+        System.out.println("/sessionid");
+        System.out.println("SessionID: " + session.getId());
+        session.setMaxInactiveInterval(60);
+        System.out.println("Session Max Inactive Time : " + session.getMaxInactiveInterval());
+        session.setAttribute("user", "Coucou, je suis l'attribut de la Session.");
+        System.out.println("Session Attributes : " + session.getAttributeNames());
+        return "Hello !!! Everything seem OK ;-)";
+    }
+    ////////////////    Route Suppression SessionID
+    @GetMapping("/sessionkillid")
+    public String sessionKillIdGet( HttpSession session) {
+        System.out.println("/sessionKillId");
+        System.out.println("SessionID: #" + session.getId());
+        System.out.println("Session Attribute : " + session.getAttribute("user"));
+        session.invalidate();
+        System.out.println("Kill Session ???");
+        System.out.println("New SessionID: #" + session.getId());
+        System.out.println("Session Attributes : " + session.getAttributeNames());
         return "Hello !!! Everything seem OK ;-)";
     }
 
