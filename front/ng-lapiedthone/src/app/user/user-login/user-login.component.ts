@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 
 import { Global } from '../../global';
 
@@ -10,7 +10,7 @@ import { Global } from '../../global';
 })
 export class UserLoginComponent {
 
-  constructor(public g: Global, form: FormBuilder ) {}
+  constructor(public g: Global) {}
 
   formEmail = new FormControl('');
   formPwd = new FormControl('');
@@ -19,7 +19,6 @@ export class UserLoginComponent {
     console.log("ID : " + this.formEmail.value);
     console.log("MDP : " + this.formPwd.value);
   }
-
   
   forgotPassword() {
     console.log("Aller à Mot de passe oublié");

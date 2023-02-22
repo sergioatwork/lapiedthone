@@ -7,8 +7,8 @@
 		<form class="col-md-8 col-lg-6 col-xl-4 my-5
 			bg-warning bg-gradient bg-opacity-50 border border-warning border-3 rounded p-3 text-center fs-4 fw-bold
 			d-flex flex-column justify-content-evenly">
-				<app-form-email></app-form-email>
-				<app-form-password></app-form-password>
+				<input class="form-control" type="text" placeholder="Email" [formControl]="formEmail">
+				<input class="form-control" id="formPwd" type="password" placeholder="Mot de Passe" [formControl]="formPwd">
 				<button type="button" class="d-block btn btn-success fw-bold text-dark text-capitalize" (click)="submitLogin()">S'identifier</button>
 		</form>
 		<div class="col-md-2 col-lg-3 col-xl-4"></div>
