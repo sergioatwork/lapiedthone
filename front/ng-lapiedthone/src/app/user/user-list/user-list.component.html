@@ -26,19 +26,19 @@
         </thead>
         <tbody>
             <tr *ngFor="let user of userList" class="{{ user.enable ? 'bg-light' : 'bg-danger' }} bg-opacity-50">
-                <td>{{ user.id }}</td>
+                <td>{{ user.userId }}</td>
                 <td>{{ user.name }}</td>
                 <td>{{ user.firstName }}</td>
                 <td>{{ user.email }}</td>
                 <td>{{ user.subDate }}</td>
                 <td>{{ user.expDate }}</td>
                 <td><button (click)="updateUser(user)" class="border-primary rounded bg-primary"><i class="d-block bi bi-save2 text-white p-1"></i></button></td>
-                <td><button (click)="editUser(user.id)" class="border-info rounded bg-info"><i class="d-block bi bi-eye text-white p-1"></i></button></td>
+                <td><button (click)="editUser(user.userId)" class="border-info rounded bg-info"><i class="d-block bi bi-eye text-white p-1"></i></button></td>
                 <td *ngIf="user.enable; then thenBlock else elseBlock"></td>
-                    <ng-template #thenBlock><td><button (click)="disableUser(user.id)" class="border-danger rounded bg-danger"><i class="d-block bi bi-lock text-white p-1"></i></button></td></ng-template>
-                    <ng-template #elseBlock><td><button (click)="enableUser(user.id)" class="border-success rounded bg-success"><i class="d-block bi bi-unlock text-white p-1"></i></button></td></ng-template>
+                    <ng-template #thenBlock><td><button (click)="disableUser(user.userId)" class="border-danger rounded bg-danger"><i class="d-block bi bi-lock text-white p-1"></i></button></td></ng-template>
+                    <ng-template #elseBlock><td><button (click)="enableUser(user.userId)" class="border-success rounded bg-success"><i class="d-block bi bi-unlock text-white p-1"></i></button></td></ng-template>
                 <td><button (click)="resetPwUser(user.email)" class="border-warning rounded bg-warning"><i class="d-block bi bi-key text-white p-1"></i></button></td>
-                <td><button (click)="deleteUser(user.id)" class="border-danger rounded bg-danger"><i class="d-block bi bi-trash3 text-white p-1"></i></button></td>
+                <td><button (click)="deleteUser(user.userId)" class="border-danger rounded bg-danger"><i class="d-block bi bi-trash3 text-white p-1"></i></button></td>
             </tr>
         </tbody>
     </table>

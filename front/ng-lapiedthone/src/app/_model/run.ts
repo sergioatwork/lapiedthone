@@ -1,5 +1,5 @@
 export class Run {
-    id: number = 0;
+    runId: number = 0;
     name: string = '';
     type: string = '';
     description: string = '';

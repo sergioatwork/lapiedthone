@@ -49,9 +49,16 @@ body {
     font-family: 'Baloo2';
 }
 
-h1 {
+h1,h2 {
+    font-family: 'Permanent Marker', cursive;
     text-shadow:    -0.25rem -0.25rem 0.25rem #ffffffff,
                     0.25rem -0.25rem 0.25rem #ffffffff,
                     -0.25rem 0.25rem 0.25rem #ffffffff,
                     0.25rem 0.25rem 0.25rem #ffffffff;
+}
+h1 {
+    font-size: 4rem;
+}
+h2 {
+    font-size: 2rem;
 }

@@ -81,4 +81,11 @@ public class User {
         if (this.expDate.isAfter(LocalDateTime.now())) {return true;}
         return false;
     }
+
+//    public String endodePassword(String password) {
+//        return BCryptPasswordEncoder().encode(password);
+//    }
+//    public boolean checkPassword(String password) {
+//        return BCryptPasswordEncoder().matches(password, this.getPassword());
+//    }
 }

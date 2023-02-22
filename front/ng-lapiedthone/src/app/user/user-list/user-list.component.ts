@@ -30,6 +30,7 @@ export class UserListComponent {
 	}
 
 	disableUser(id: number): boolean {
+		console.log("ID ==> #" + id+ "#");
 		this.userService.patchDisableUser(id).subscribe(data => {this.resultRq = data;});
 		return this.resultRq;
 	}

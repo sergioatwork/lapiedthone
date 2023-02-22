@@ -1,13 +1,33 @@
-<article class="d-flex flex-column">
+<div class="position-fixed container-fluid top-50 start-0 translate-middle-y bg-white bg-opacity-75 bg-gradient shadow-lg py-5">
+	<div class="row">
+		<h2 class="col-12 text-center text-uppercase text-warning">S'identifier</h2>
+	</div>
+	<div class="row">
+		<div class="col-md-2 col-lg-3 col-xl-4"></div>
+		<form class="col-md-8 col-lg-6 col-xl-4 my-5
+			bg-warning bg-gradient bg-opacity-50 border border-warning border-3 rounded p-3 text-center fs-4 fw-bold
+			d-flex flex-column justify-content-evenly">
+				<app-form-email></app-form-email>
+				<app-form-password></app-form-password>
+				<button type="button" class="d-block btn btn-success fw-bold text-dark text-capitalize" (click)="submitLogin()">S'identifier</button>
+		</form>
+		<div class="col-md-2 col-lg-3 col-xl-4"></div>
+	</div>
+	<div class="row">
+		<div class="col-md-2 col-lg-3 col-xl-4"></div>
+		<button type="button" class="col-md-8 col-lg-6 col-xl-4 my-5 btn btn-danger fw-bold text-dark text-capitalize" (click)="forgotPassword()">Mot de passe oublié</button>
+		<div class="col-md-2 col-lg-3 col-xl-4"></div>
+	</div>
+</div>
+
+
+
+
+<!-- <article class="d-flex flex-column">
 
 	<h1 class="my-5 text-center text-warning fw-bold">{{g.titre}}</h1>
 
-	<form
-		class="my-4 bg-warning bg-gradient bg-opacity-50 border border-warning border-3 rounded p-3 text-center fs-4 fw-bold">
-		<!-- <app-form-email></app-form-email> -->
-        <label for="mdp">Mot de passe : </label>
-            <!-- <input id="mdp" type="text" [formControl]="mdp"> -->
-	</form>
+	
 
 	<article
 		class="my-4 bg-success bg-gradient bg-opacity-50 border border-success border-3 rounded p-3 text-center fs-4 fw-bold">
@@ -17,4 +37,4 @@
 	<a class="d-block my-4 bg-danger p-3 bg-gradient bg-opacity-50 border border-danger border-3 rounded text-body text-decoration-none text-center fs-4 fw-bold" routerLink="/accueil/reglement">
 		Le réglement et les modalités.
 	</a>
-</article>
+</article> -->

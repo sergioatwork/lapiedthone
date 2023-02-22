@@ -4,8 +4,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-form-email',
-  templateUrl: './form-email.component.html',
-  styleUrls: ['./form-email.component.scss']
+  template: '<input class="form-control" type="text" placeholder="Email" [formControl]="formEmail">',
+  // templateUrl: './form-email.component.html',
+  // styleUrls: ['./form-email.component.scss']
 })
 export class FormEmailComponent {
   formEmail = new FormControl('');

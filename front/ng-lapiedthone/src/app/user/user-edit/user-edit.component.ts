@@ -14,7 +14,7 @@ export class UserEditComponent {
 	constructor(private route: ActivatedRoute) { }
 
 	ngOnInit(): void {
-		this.user.id = Number(this.route.snapshot.paramMap.get('id'));
+		this.user.userId = Number(this.route.snapshot.paramMap.get('id'));
 	}
 
 }
